@@ -17,7 +17,7 @@ var Sequelize = require('sequelize');
 
 // Usar BBDD SQLite o Postgres
  var sequelize = new Sequelize(DB_name, user, pwd,
-  { dialect:  "sqlite",
+  { dialect:  protocol,
     protocol: protocol,
     port:     port,
     host:     host,
@@ -38,8 +38,11 @@ sequelize.sync().then(function() {
   Quiz.count().then(function (count){
     if(count === 0) {   // la tabla se inicializa solo si está vacía
       Quiz.create({ pregunta: 'Capital de Italia',
-      	            respuesta: 'Roma'
-      	         })
+       	            respuesta: 'Roma'
+       	         });
+       Quiz.create({ pregunta: 'Capital de Portugal',
+                     respuesta: 'Lisboa'
+                  })
       .then(function(){console.log('Base de datos inicializada')});
     };
   });
