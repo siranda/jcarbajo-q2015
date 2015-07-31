@@ -27,7 +27,7 @@ var Sequelize = require('sequelize');
 );
 
 // Importar definicion de la tabla Quiz
-//var quiz_path = path.join(__dirname,'quiz');
+var quiz_path = path.join(__dirname,'quiz');
 var Quiz = sequelize.import(path.join(__dirname,'quiz'));
 
 exports.Quiz = Quiz; // exportar tabla Quiz

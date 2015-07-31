@@ -1,4 +1,14 @@
+<!--// formulario de búsqueda en preguntas-->
+<form method="get" action="/quizes">
+	<p>Buscador preguntas:
+		<input type="text" name="search" />
+		<input type="submit" name="submit" value="Buscar" />
+	</p>
+	<p style="border-style: solid; font-size: 10px; height: 1px; border-width: 0px; width: 75%;">_
+	</p>
+</form>
 
+<!--//tabla de preguntas -->
 <table>
 <% var i; for(i=0; i < quizes.length; i++) { %>
 	<tr><td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td></tr>
