@@ -25,12 +25,18 @@
     <span><a href="/quizes">Preguntas</a></span>
 <!--
 <span><a href="/author">Créditos</a></span>
-<span><a href="/quizes/question">Preguntas</a></span>
 -->
-
   </nav>
 
   <section class="main" id="s1">
+    <% if (errors.length) { %>
+         <span id='ErrorMsgs'>
+           Corregir Errores: <br/>
+           <% for (var i in errors) { %>
+               <span> <%= errors[i].message %> </span><br/>
+           <% } %>
+         </span>
+       <% } %>
     <div> <%- body %> </div>
   </section>
 
