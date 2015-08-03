@@ -1,0 +1,9 @@
+Jorge Carbajo Centeno
+
+Mi enlace a github es https://github.com/siranda/jcarbajo-q2015
+
+Mi aplicación funcionando en heroku es :
+whispering-oasis-2063.herokuapp.com
+
+Espero que cuando corrijais esto siga funcionando porque he subido a heroku varias aplicaciones que han dejado de funcionar a las pocas horas. Ahora funciona.
+Un saludo y gracias
