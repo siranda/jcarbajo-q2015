@@ -4,16 +4,16 @@
 		<input type="text" name="search" />
 		<input type="submit" name="submit" value="Buscar" />
 	</p>
-	<p style="border-style: solid; font-size: 10px; height: 1px; border-width: 0px; width: 75%;">_
-	</p>
 </form>
+<br/>
 
 <!--//tabla de preguntas -->
 <table>
 <% var i; for(i=0; i < quizes.length; i++) { %>
 	<tr>
-	<td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
+	<td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a> (<%= quizes[i].tema %>)</td>
 	<td><a href="/quizes/<%= quizes[i].id %>/edit"><button>Editar</button></a></td>
+	<td class='tema'>	<%= quizes[i].tema %>	</td>
 	<td>
       <form method="post" action="quizes/<%= quizes[i].id %>?_method=delete">
         <button type="submit" onclick="return confirm('Borrar: <%= quizes[i].pregunta %>');">
@@ -24,4 +24,10 @@
 	</tr>
 <% } %>
 </table>
+<br/>
 <p><a href="/quizes/new"><button class="izq" type="button">Crear Pregunta</button></a></p>
+<!--
+<script type="text/javascript">
+  document.querySelector('td a').focus();
+</script>
+-->
