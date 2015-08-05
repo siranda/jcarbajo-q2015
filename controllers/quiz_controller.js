@@ -2,14 +2,16 @@ var models = require('../models/models.js');
 
 // Autoload - factoriza el código si ruta incluye :quizId
 exports.load = function(req, res, next, quizId) {
-	models.Quiz.findById(quizId).then(
-		function(quiz) {
+	models.Quiz.find({
+			where : { id: Number(quizId) },
+			include: [{ model: models.Comment }]
+		}).then(function(quiz) {
 			if(quiz) {
 				req.quiz = quiz;
 				next();
-			} else { next(new Error('No existe quizId=' + quizId)); }
+			} else { next(new Error('No existe quizId=' + quizId))}
 		}
-	).catch(function(error) { next(error); });
+	).catch(function(error) { next(error);});
 };
 
 // GET /quizes
@@ -31,7 +33,7 @@ if(typeof txtbuscdo !== 'undefined') { //GET /quizes?search=texto_a_buscar
 // GET /quizes/:id
 exports.show = function(req, res) {
 	models.Quiz.find(req.params.quizId).then(function(quiz) {
-		res.render('quizes/show', {quiz: req.quiz,  errors:[]});
+		res.render('quizes/show.ejs', {quiz: req.quiz,  errors:[]});
 	})
 };
 
