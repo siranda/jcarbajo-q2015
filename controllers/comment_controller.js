@@ -17,11 +17,12 @@ exports.create = function (req, res) {
   .validate()
   .then(function(err) {
     if (err) {
-      res.render('comments/new', {comment: comment, quizid: req.params.quizId, errors: err.errors});
+      res.render('comments/new.ejs', {comment: comment, errors: err.errors});
+	  //res.render('comments/new.ejs', {comment: comment, quizid: req.params.quizId, errors: err.errors});
     } else {
       comment
       .save()
       .then(function(){ res.redirect('/quizes/'+req.params.quizId)});
-    }
+    }	//res.redirect: redirección http a lista de preguntas
   }).catch(function(error){next(error)});
 };
