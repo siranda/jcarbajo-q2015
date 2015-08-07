@@ -16,12 +16,13 @@
 
 <body>
 <div id="page-wrap">
+
   <header class="main" id="h1">
     <% if(!session.user) { %>
       <span class="right"><a href="/login">Login</a></span>
-    <% } else { %>
-      <span class="right"> <%= session.user.username %> <a href="/logout">Logout</a></span>
-    <% } %>
+       <% } else {%>
+            <span class="right" id="cierre-session"> La sesión caducará en <span id="tiempo">120</span> seg. (<b><%=session.user.username%>) </b><a href="/logout">Logout</a></span>
+          <% } %>
     <h2>Quiz <span>: el juego de las preguntas</span></h2>
   </header>
 
@@ -52,5 +53,27 @@
 
   </footer>
 </div>
+
+  <% if(session.user) { %>
+     <script type="text/javascript">
+       var int = setInterval(function() {
+         var ahora = (new Date()).getTime();
+         var inicio = <%= session.timestamp %>
+         var quedan = 120-Math.floor((ahora-inicio)/1000);
+
+         if (quedan <= 0) {
+           document.getElementById("tiempo").innerHTML=0;
+         } else {
+           document.getElementById("tiempo").innerHTML=quedan;
+         }
+
+         if (quedan === -1) {
+           clearInterval(int);
+           location.reload();
+         }
+       }, 1000);
+     </script>
+   <% } %>
+
 </body>
 </html>

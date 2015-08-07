@@ -4,7 +4,7 @@ var users = {
 }
 
 // Comprueba si el usuario está resgistrado en users
-// Si la autenticación fallao hay errores se ejecuta el callback(error)
+// Si la autenticación falla, hay errores y se ejecuta el callback(error)
 
 exports.autenticar = function (login, password, callback) {
   if(users[login]) {

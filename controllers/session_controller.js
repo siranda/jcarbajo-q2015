@@ -41,5 +41,6 @@ exports.create = function (req, res) {
 // DELETE /logout --- Destruir sesión
 exports.destroy = function (req, res) {
   delete req.session.user;
+   console.log("Ha terminado la sesión");
   res.redirect(req.session.redir.toString());
 };
